@@ -2,7 +2,7 @@ import Input from "./Input.jsx";
 import { isEmail, isNotEmpty, hasMinLength } from "../util/validation.js";
 import { useInput } from "../hooks/useInput.js";
 
-export default function Login() {
+export default function Login({ onSwitch }) {
   const {
     value: emailValue,
     handleInputChange: handleEmailChange,
@@ -55,7 +55,9 @@ export default function Login() {
       </div>
 
       <p className="form-actions">
-        <button className="button button-flat">Reset</button>
+        <button type="button" className="button button-flat" onClick={onSwitch}>
+          Signup
+        </button>
         <button className="button">Login</button>
       </p>
     </form>

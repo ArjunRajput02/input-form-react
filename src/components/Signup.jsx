@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Signup() {
+export default function Signup({ onSwitch }) {
   const [passwordArenotEqual, setPasswordArenotEqual] = useState(false);
 
   function handleSubmit(event) {
@@ -12,9 +12,12 @@ export default function Signup() {
 
     if (data.password !== data["confirm-password"]) {
       setPasswordArenotEqual(true);
+      return;
     }
+
     console.log(data);
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Welcome on board!</h2>
@@ -45,8 +48,8 @@ export default function Signup() {
             name="confirm-password"
             required
           />
-          <div class="control-error">
-            {passwordArenotEqual && <p>Password must be same</p>}
+          <div className="control-error">
+            {passwordArenotEqual && <p>Passwords must be same</p>}
           </div>
         </div>
       </div>
@@ -66,7 +69,7 @@ export default function Signup() {
       </div>
 
       <div className="control">
-        <label htmlFor="phone">What best describes your role?</label>
+        <label htmlFor="role">What best describes your role?</label>
         <select id="role" name="role" required>
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
@@ -84,7 +87,6 @@ export default function Signup() {
             id="google"
             name="acquisition"
             value="google"
-            
           />
           <label htmlFor="google">Google</label>
         </div>
@@ -95,19 +97,12 @@ export default function Signup() {
             id="friend"
             name="acquisition"
             value="friend"
-            
           />
           <label htmlFor="friend">Referred by friend</label>
         </div>
 
         <div className="control">
-          <input
-            type="checkbox"
-            id="other"
-            name="acquisition"
-            value="other"
-            
-          />
+          <input type="checkbox" id="other" name="acquisition" value="other" />
           <label htmlFor="other">Other</label>
         </div>
       </fieldset>
@@ -125,9 +120,10 @@ export default function Signup() {
       </div>
 
       <p className="form-actions">
-        <button type="reset" className="button button-flat">
-          Reset
+        <button type="button" className="button button-flat" onClick={onSwitch}>
+          Login
         </button>
+
         <button type="submit" className="button">
           Sign up
         </button>
