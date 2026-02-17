@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Signup({ onSwitch }) {
-  const [passwordArenotEqual, setPasswordArenotEqual] = useState(false);
+  const [isPasswordEqual, setIsPasswordEqual] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -11,11 +11,11 @@ export default function Signup({ onSwitch }) {
     data.acquisition = acquisition;
 
     if (data.password !== data["confirm-password"]) {
-      setPasswordArenotEqual(true);
+      setIsPasswordEqual(true);
       return;
     }
 
-    console.log(data);
+    alert(JSON.stringify(data, null, 2));
   }
 
   return (
@@ -49,7 +49,7 @@ export default function Signup({ onSwitch }) {
             required
           />
           <div className="control-error">
-            {passwordArenotEqual && <p>Passwords must be same</p>}
+            {isPasswordEqual && <p>Passwords must be same</p>}
           </div>
         </div>
       </div>

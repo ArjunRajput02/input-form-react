@@ -23,7 +23,7 @@ export default function Login({ onSwitch }) {
       return;
     }
 
-    console.log(emailValue, passwordValue);
+    alert(emailValue, passwordValue);
   }
 
   return (
