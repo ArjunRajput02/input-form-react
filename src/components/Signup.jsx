@@ -16,6 +16,7 @@ export default function Signup({ onSwitch }) {
     }
 
     alert(JSON.stringify(data, null, 2));
+    event.target.reset();
   }
 
   return (
